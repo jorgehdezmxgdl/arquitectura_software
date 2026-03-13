@@ -1,0 +1,36 @@
+Una papelería solicita mejorar su sistema informático por que la gente ya no consume un gran volumen de artículos escolares, y los han contratado a ustedes para solventar este problema. 
+La base de datos esta en Oracle y el sistema se desconoce en que lenguaje fue elaborado y no hay código fuente, solo el ejecutable. 
+Tiene  como máximo 3 meses para entregarlo y no tiene muchos recursos económicos para pagar licenciamientos ni un alto costo por el desarrollo.
+- Piense que haría primero?
+- Cual seria su segundo paso?
+- Cuales serian los retos si decide desarrollarlo?
+- Y lo mas importante, como atraer a mas clientes?
+
+servicio de impresión para documentos oficiales, premiar a clientes frecuentes...
+
+Checar que podemos usar del sistema, java gratuito, y nos conectamos de Oracle a java
+bajo presupuesto y el tiempo de entrega
+revisar zonas cercanas a la papeleria para la creación de paquetes  escolares acorde al nivel y expandir nueva mercancia
+
+
+Analizar el sistema actual y db para ver la info
+Ver como funciona, que hace el sistema
+No tener el código fuente y rehacer los modulos y el presupuesto limitado
+Promociones, vender por internet, registro de clientes y enviar promos
+o cuando los infantes esten por ingresar a un nuevo ciclo escolar
+
+
+
+Ir a las escuelas para promocionarme
+Armar paquetes para cada paquete y ajustar el precio para cada grado
+Mejorar los precios
+Promocionar ofreciendo volantes
+
+Revisar las funciones que hace el sistema anterior, si la db contiene info útil
+Migrar la db si es viable
+Priorizar las partes esenciales del sistema
+Usar productos de bajo demanda para crear promociones
+
+
+
+Profe I
