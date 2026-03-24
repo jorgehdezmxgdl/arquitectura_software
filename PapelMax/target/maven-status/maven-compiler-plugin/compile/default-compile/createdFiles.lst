@@ -1,4 +1,6 @@
 mx\gdl\unedl\papelmax\SecondaryController.class
 mx\gdl\unedl\papelmax\PrimaryController.class
 module-info.class
+mx\gdl\unedl\db\DbManager.class
 mx\gdl\unedl\papelmax\App.class
+mx\gdl\unedl\model\Producto.class
