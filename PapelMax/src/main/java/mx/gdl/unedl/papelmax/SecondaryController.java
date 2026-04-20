@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TableColumn;
@@ -35,8 +36,14 @@ public class SecondaryController {
     private TableColumn<Producto, Integer> existencia;
     
     public SecondaryController() {
-       dbmanager = new DbManager();
-       dbmanager.creaTabla();
+       dbmanager = new DbManager(false);
+       if (!dbmanager.isActivo()) {
+           Alert alerta = new Alert
+                 (Alert.AlertType.ERROR);
+           alerta.setTitle("Error critico");
+           alerta.setContentText("La DB no está activa");
+           alerta.showAndWait();
+       } 
        /*
        clave.setCellValueFactory(new PropertyValueFactory<>("clave"));
        nombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));

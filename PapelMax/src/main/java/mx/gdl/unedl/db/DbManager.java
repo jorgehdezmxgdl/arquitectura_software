@@ -20,12 +20,33 @@ public class DbManager {
     private String password;
     private String database;
 
-    public DbManager() {
-        this.host = "db.xjslehwymdedwrgetvjr.supabase.co";
-        this.port = 5432;
-        this.username = "postgres";
-        this.password = "JwbBnSAMNEkFTAxa";
-        this.database = "postgres";
+    public DbManager(boolean option) {
+        if (option) {
+            this.host = "db.xjslehwymdedwrgetvjr.supabase.co";
+            this.port = 5432;
+            this.username = "postgres";
+            this.password = "JwbBnSAMNEkFTAxa";
+            this.database = "postgres";
+        } else {
+            this.host = "localhost";
+            this.port = 5432;
+            this.username = "postgres";
+            this.password = "12345678";
+            this.database = "papeleria";
+        }
+    }
+    
+    public boolean isActivo() {
+        Connection cp  = getConnection();
+        boolean activo = (cp != null);
+        if (cp != null) {
+            try {
+                cp.close();
+            } catch (SQLException ex) {
+                System.getLogger(DbManager.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            }
+        }
+        return activo;
     }
     
     public Connection getConnection() {
