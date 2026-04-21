@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego del Mole</title>
+    <!-- 80x20  750x1450-->
+    <script>
+        let proceso;
+        let contador = 0;
+        let tiempo;
+        let maximoTiempo = 5;
+        let minuto  = 0;
+        let segundo = 0;
+       
+        function inicia_juego() {
+            let imgTopo = document.getElementById("img_topo");
+            let aleTop  = Math.floor((Math.random() * 670)  + 80);
+            let aleLeft = Math.floor((Math.random() * 1430) + 20);
+            console.log(aleLeft);
+            console.log(aleTop);
+            imgTopo.style.left = aleLeft + "px";
+            imgTopo.style.top = aleTop + "px";
+            imgTopo.style.display = "block";
+        }
+
+        function reloj() {
+            segundo = segundo + 1;
+            if (segundo === 60) {
+                segundo = 0;
+                minuto = minuto + 1;
+                if (minuto === maximoTiempo) {
+                    clearInterval(tiempo);
+                }
+            }
+            document.getElementById("limiteTiempo").innerHTML = 
+               minuto + ":" + ((segundo < 10) ? '0' + segundo: segundo);
+        }
+
+        function automatizado() {
+          tiempo  = setInterval(reloj, 100);   
+          proceso = setInterval(inicia_juego, 900);   
+        }
+
+        function contabiliza() {
+            contador = contador + 1;
+            document.getElementById("marcador").innerHTML = contador;
+        }
+
+    </script>
+</head>
+<body>
+   <div style="text-align: center;">
+      <h2>Juego del Topo</h2>
+      <button onclick="automatizado()">Inicia el juego</button> 
+      <p>Tiempo restante: <span id="limiteTiempo"></span></p>
+      <p>Aciertos: <span id="marcador">0</span></p>
+   </div>
+   <img src="mole.png" 
+       onclick="contabiliza()"
+       id="img_topo" style="position:absolute; top:80px; left:20px; 
+                 width: 40px; height: 40px; display: none;" />
+</body>
+</html>
