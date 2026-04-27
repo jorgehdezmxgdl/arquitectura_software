@@ -3,15 +3,102 @@
     <head>
         <title>Start Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://code.jquery.com/jquery-4.0.0.min.js" 
+        integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
+        <style>
+            .container {
+                display: grid;
+                place-items: center; /* Centers both horizontally and vertically */
+            }
+        </style>
     </head>
     <body>
-        <h1>Usando servlet</h1>
-        <a href="valida?pagina=3">
-            Informacion del servlet
-        </a>
-        <form name="forma" method="post" action="valida">
-            <input type="text" name="nombre" />
-            <input type="submit" value="Validar" />
-        </form>
+        <h1 style="text-align: center;color: #0066cc">
+            Acceso a PaperWeb
+        </h1>
+        <div class="container">
+            <form name="forma" method="post" action="valida">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="2">
+                                Ingresa la información solicitada 
+                            </th> 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> <label> Clave </label> </td>
+                            <td> 
+                                <input type="text" id="clave" name="clave" 
+                                       placeholder="clave" />
+                            </td>                       
+                        </tr>
+                        <tr>
+                            <td> <label> Contraseña </label> </td>
+                            <td>
+                                <input type="password" id="passw" 
+                                       name="passw" 
+                                       placeholder="tu contraseña" />  
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-align: center">
+                                <input type="submit" 
+                                       id="btnIngresar"
+                                       value="Ingresar" /> 
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+            <div id="espera" style="display: none;">
+                <img src="imgs/loading.gif" 
+                     style="width: 42px; height: 42px;" />
+            </div>
+            <div>
+                <span id="errores" style="color:red;">       
+                </span>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                $("#clave").keypress(function (e) {
+                    $("#errores").text("");
+                });
+                $("#passw").keypress(function (e) {
+                    $("#errores").text("");
+                });
+                $("#btnIngresar").click(function (e) {
+                    e.preventDefault();
+                    let clave = $("#clave").val();
+                    let passw = $("#passw").val();
+                    if (!clave) {
+                        $("#errores").text("Ingresa la clave");
+                        return;
+                    }
+                    if (!passw) {
+                        $("#errores").text("Ingresa la clave");
+                        return;
+                    }
+                    $.ajax({
+                        url: 'valida_acceso.jsp',
+                        data: {
+                            clave,
+                            passw
+                        },
+                        beforeSend: function (data) {
+                           $("#espera").show();
+                        },
+                        success: function (data) {
+
+                        },
+                        error: function (data) {
+
+                        }
+                    });
+                });
+            });
+        </script>
     </body>
 </html>
