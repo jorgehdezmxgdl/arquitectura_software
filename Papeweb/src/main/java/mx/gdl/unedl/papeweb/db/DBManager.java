@@ -17,6 +17,7 @@ public class DBManager {
     
     private Connection getConnection() {
         try {
+            // cargar el driver de la db
             Class.forName("org.postgresql.Driver");
             Connection cp =  
                     DriverManager.getConnection(url,username,passw);
@@ -30,6 +31,8 @@ public class DBManager {
         return null;
     }
     
+    // mecanismo para validar un usuario registrado
+    // en el sistema
     public boolean validaUsuario(String clave,
                                  String pass) {
         boolean entrada = false;
