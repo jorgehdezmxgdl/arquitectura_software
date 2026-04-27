@@ -8,7 +8,7 @@
         <style>
             .container {
                 display: grid;
-                place-items: center; /* Centers both horizontally and vertically */
+                place-items: center; 
             }
         </style>
     </head>
@@ -91,10 +91,21 @@
                            $("#espera").show();
                         },
                         success: function (data) {
-
+                            console.log(data);
+                            data = data?.trim();
+                            console.log(data);
+                            if (data === "Válido") {
+                                alert("Bienvenido");
+                            } else {
+                                $("#errores").
+                                        text("Credenciales inválidas");
+                            }
                         },
                         error: function (data) {
 
+                        },
+                        complete: function(data) {
+                           $("#espera").hide();
                         }
                     });
                 });
